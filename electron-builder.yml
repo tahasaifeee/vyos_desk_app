@@ -1,0 +1,71 @@
+appId: com.vyosmanager.app
+productName: VyOS Manager
+copyright: Copyright © 2024 VyOS Manager Contributors
+
+directories:
+  output: release
+  buildResources: resources
+
+files:
+  - dist/**/*
+  - package.json
+  - node_modules/**/*
+
+# Windows Configuration
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+  icon: resources/icon.ico
+  artifactName: ${productName}-Setup-${version}.${ext}
+  requestedExecutionLevel: asInvoker
+
+# NSIS Installer Configuration
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: VyOS Manager
+  installerIcon: resources/installer-icon.ico
+  uninstallerIcon: resources/uninstaller-icon.ico
+  installerHeader: resources/installer-header.bmp
+  installerSidebar: resources/installer-sidebar.bmp
+  deleteAppDataOnUninstall: false
+  perMachine: false
+  allowElevation: true
+  runAfterFinish: true
+  menuCategory: true
+  license: LICENSE
+
+# Compression
+compression: normal
+asar: true
+
+# Publishing (GitHub Releases)
+publish:
+  - provider: github
+    owner: your-org
+    repo: vyos-desktop-manager
+
+# File Associations
+fileAssociations:
+  - ext: vyos
+    name: VyOS Configuration
+    description: VyOS Configuration File
+    icon: resources/file-icon.ico
+    role: Editor
+
+# Protocols
+protocols:
+  - name: vyos-manager
+    schemes:
+      - vyos
+
+# Metadata
+extraMetadata:
+  name: vyos-desktop-manager
+  description: Professional desktop application for managing VyOS routers
+  author: VyOS Manager Team
+  homepage: https://github.com/your-org/vyos-desktop-manager

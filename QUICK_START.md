@@ -12,39 +12,53 @@ Your VyOS Desktop Manager application is **fully implemented and ready to build*
 - ✅ Configuration backup system
 - ✅ All documentation written
 
-## 🚀 Next Steps - Build on Windows 11
+## 🚀 One-Line Installer (Easiest Way!)
 
-Since you need a `.exe` installer for your Windows 11 desktop, you need to build it on a Windows machine.
+**Just copy this into PowerShell on Windows 11:**
 
-### Option 1: Build on Your Windows 11 PC (Recommended)
+```powershell
+cd $env:USERPROFILE\Downloads; if (Test-Path vyos_desk_app) { cd vyos_desk_app; git pull origin claude/vyos-desktop-app-lTiFp; Remove-Item -Recurse -Force dist, release -ErrorAction SilentlyContinue } else { git clone https://github.com/tahasaifeee/vyos_desk_app.git; cd vyos_desk_app; git checkout claude/vyos-desktop-app-lTiFp }; npm install; npm run electron:build; explorer release
+```
 
-**1. Install Prerequisites** (one-time setup):
+**What it does:**
+- ✅ **First time?** Downloads, builds, and opens installer folder
+- ✅ **Updating?** Gets latest fixes, rebuilds automatically
+- ✅ **Hands-free:** Just paste and wait 5-10 minutes
+
+**Requirements (install once):**
+- Node.js 18 LTS: https://nodejs.org/
+- Git for Windows: https://git-scm.com/
+
+**Result:** Opens folder with `VyOS-Manager-Setup-1.0.0.exe` ready to install!
+
+---
+
+## Manual Build (If You Prefer Step-by-Step)
+
+### Option 1: Build on Your Windows 11 PC
+
+**1. Install Prerequisites** (one-time):
 - Node.js 18 LTS: https://nodejs.org/
 - Git for Windows: https://git-scm.com/
 
 **2. Clone and Build**:
 ```powershell
 # Open PowerShell
-git clone <your-repo-url>
+git clone https://github.com/tahasaifeee/vyos_desk_app.git
 cd vyos_desk_app
 git checkout claude/vyos-desktop-app-lTiFp
 
-# Install dependencies
+# Install and build
 npm install
-
-# Build the Windows installer
 npm run electron:build
 ```
 
 **3. Get Your .exe**:
-The installer will be created at:
 ```
 release/VyOS-Manager-Setup-1.0.0.exe  (~150MB)
 ```
 
-**Build time**: 5-10 minutes on first build
-
-📖 **Detailed instructions**: See `BUILD_ON_WINDOWS.md`
+**Build time**: 5-10 minutes
 
 ### Option 2: Use GitHub Actions (Automated)
 

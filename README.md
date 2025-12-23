@@ -50,7 +50,27 @@ Before you begin, ensure you have the following installed:
 - **Windows 11** (x64)
 - **Git** (for version control)
 
-## Installation
+## 🚀 Quick Install / Update (One Command)
+
+**Copy and paste this into PowerShell on Windows 11:**
+
+```powershell
+cd $env:USERPROFILE\Downloads; if (Test-Path vyos_desk_app) { cd vyos_desk_app; git pull origin claude/vyos-desktop-app-lTiFp; Remove-Item -Recurse -Force dist, release -ErrorAction SilentlyContinue } else { git clone https://github.com/tahasaifeee/vyos_desk_app.git; cd vyos_desk_app; git checkout claude/vyos-desktop-app-lTiFp }; npm install; npm run electron:build; explorer release
+```
+
+**What this does:**
+- ✅ First time: Downloads and builds the app
+- ✅ Updates: Gets latest version and rebuilds
+- ✅ Automatic: Handles everything for you
+- ✅ Opens folder with installer when done
+
+**Time:** ~5-10 minutes
+
+**Result:** `VyOS-Manager-Setup-1.0.0.exe` in the opened folder
+
+---
+
+## Manual Installation
 
 ### 1. Install Dependencies
 

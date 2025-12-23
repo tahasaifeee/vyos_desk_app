@@ -2,9 +2,6 @@
  * Main Electron Process
  */
 
-// Register module aliases FIRST before any other imports
-import 'module-alias/register';
-
 import { app, BrowserWindow, ipcMain } from 'electron';
 import { join } from 'path';
 import log from 'electron-log';

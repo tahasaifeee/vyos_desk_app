@@ -6,6 +6,10 @@
   "author": "VyOS Manager Team",
   "license": "MIT",
   "private": true,
+  "_moduleAliases": {
+    "@shared": "dist/main/shared",
+    "@main": "dist/main/main"
+  },
   "scripts": {
     "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:main\"",
     "dev:renderer": "vite",
@@ -27,6 +31,7 @@
     "electron-log": "^5.0.1",
     "electron-store": "^8.1.0",
     "keytar": "^7.9.0",
+    "module-alias": "^2.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sql.js": "^1.8.0",

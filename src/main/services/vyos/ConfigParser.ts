@@ -503,7 +503,7 @@ export class ConfigParser {
       return sites;
     }
 
-    Object.entries(config.vpn.ipsec['site-to-site'].peer).forEach(([remoteAddr, peerConfig]: [string, any]) => {
+    Object.entries(config.vpn.ipsec['site-to-site'].peer).forEach(([remoteAddr, _peerConfig]: [string, any]) => {
       try {
         // Parse basic site configuration
         // In a production system, this would be more comprehensive
@@ -564,7 +564,7 @@ export class ConfigParser {
 
     // Users
     if (sysConfig.login?.user) {
-      Object.entries(sysConfig.login.user).forEach(([username, userConfig]: [string, any]) => {
+      Object.entries(sysConfig.login.user).forEach(([username, _userConfig]: [string, any]) => {
         system.login.users.push({
           name: username,
           authentication: {},

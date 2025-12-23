@@ -2,7 +2,7 @@
   "name": "vyos-desktop-manager",
   "version": "1.0.0",
   "description": "Professional desktop application for managing VyOS 1.5 routers",
-  "main": "dist/main/index.js",
+  "main": "dist/main/main/index.js",
   "author": "VyOS Manager Team",
   "license": "MIT",
   "private": true,
@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
+    "@types/uuid": "^10.0.0",
     "antd": "^5.12.0",
     "electron-log": "^5.0.1",
     "electron-store": "^8.1.0",
@@ -30,12 +31,14 @@
     "react-dom": "^18.2.0",
     "sql.js": "^1.8.0",
     "ssh2": "^1.14.0",
+    "uuid": "^13.0.0",
     "zustand": "^4.4.7"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
+    "@types/sql.js": "^1.4.9",
     "@types/ssh2": "^1.11.16",
     "@typescript-eslint/eslint-plugin": "^6.13.0",
     "@typescript-eslint/parser": "^6.13.0",
@@ -67,7 +70,9 @@
       "target": [
         {
           "target": "nsis",
-          "arch": ["x64"]
+          "arch": [
+            "x64"
+          ]
         }
       ],
       "icon": "resources/icon.ico",

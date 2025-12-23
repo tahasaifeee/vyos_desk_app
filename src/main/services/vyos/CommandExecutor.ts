@@ -65,18 +65,18 @@ export class CommandExecutor {
 
       log.info('Commands executed successfully');
     } catch (error) {
-      log.error('Execution error, attempting rollback:', error.message);
+      log.error('Execution error, attempting rollback:', (error as Error).message);
 
       // Attempt rollback
       try {
         await this.rollback(0);
         log.info('Rollback completed successfully');
       } catch (rollbackError) {
-        log.error('Rollback failed:', rollbackError.message);
+        log.error('Rollback failed:', (rollbackError as Error).message);
         throw new VyOSCommandError(
-          `Command execution failed and rollback also failed: ${rollbackError.message}`,
+          `Command execution failed and rollback also failed: ${(rollbackError as Error).message}`,
           commands.join('\n'),
-          error.message
+          (error as Error).message
         );
       }
 

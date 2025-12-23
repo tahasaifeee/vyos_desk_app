@@ -7,7 +7,6 @@ import { CommandBuilder } from './CommandBuilder';
 import { ConfigParser } from './ConfigParser';
 import { CommandExecutor } from './CommandExecutor';
 import {
-  VyOSCommandResult,
   NetworkInterface,
   FirewallZone,
   FirewallRuleset,
@@ -83,7 +82,7 @@ export class VyOSClient {
     } catch (error) {
       return {
         success: false,
-        error: error.message,
+        error: (error as Error).message,
       };
     }
   }

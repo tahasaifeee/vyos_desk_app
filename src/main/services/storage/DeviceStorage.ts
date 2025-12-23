@@ -52,7 +52,7 @@ export class DeviceStorage {
       this.initialized = true;
     } catch (error) {
       log.error('Failed to initialize database:', error);
-      throw new Error(`Database initialization failed: ${error.message}`);
+      throw new Error(`Database initialization failed: ${(error as Error).message}`);
     }
   }
 
@@ -142,7 +142,7 @@ export class DeviceStorage {
       log.info(`Device added: ${device.name} (${device.id})`);
     } catch (error) {
       log.error('Failed to add device:', error);
-      throw new Error(`Failed to add device: ${error.message}`);
+      throw new Error(`Failed to add device: ${(error as Error).message}`);
     }
   }
 
@@ -238,7 +238,7 @@ export class DeviceStorage {
       log.info(`Device updated: ${device.name} (${device.id})`);
     } catch (error) {
       log.error('Failed to update device:', error);
-      throw new Error(`Failed to update device: ${error.message}`);
+      throw new Error(`Failed to update device: ${(error as Error).message}`);
     }
   }
 
@@ -259,7 +259,7 @@ export class DeviceStorage {
       log.info(`Device deleted: ${id}`);
     } catch (error) {
       log.error('Failed to delete device:', error);
-      throw new Error(`Failed to delete device: ${error.message}`);
+      throw new Error(`Failed to delete device: ${(error as Error).message}`);
     }
   }
 

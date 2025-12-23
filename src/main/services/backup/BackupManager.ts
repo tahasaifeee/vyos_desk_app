@@ -55,7 +55,7 @@ export class BackupManager {
       return backup;
     } catch (error) {
       log.error('Failed to create backup:', error);
-      throw new Error(`Failed to create backup: ${error.message}`);
+      throw new Error(`Failed to create backup: ${(error as Error).message}`);
     }
   }
 
@@ -178,7 +178,7 @@ export class BackupManager {
       log.info(`Backup exported to: ${destinationPath}`);
     } catch (error) {
       log.error('Failed to export backup:', error);
-      throw new Error(`Failed to export backup: ${error.message}`);
+      throw new Error(`Failed to export backup: ${(error as Error).message}`);
     }
   }
 
@@ -196,7 +196,7 @@ export class BackupManager {
       return await this.createBackup(deviceId, deviceName, config, description || 'Imported backup');
     } catch (error) {
       log.error('Failed to import backup:', error);
-      throw new Error(`Failed to import backup: ${error.message}`);
+      throw new Error(`Failed to import backup: ${(error as Error).message}`);
     }
   }
 

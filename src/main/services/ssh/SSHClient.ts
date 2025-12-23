@@ -33,7 +33,6 @@ export class SSHClient {
   private client: Client | null = null;
   private connected: boolean = false;
   private connectionOptions: SSHConnectionOptions;
-  private reconnectAttempts: number = 0;
 
   constructor(options: SSHConnectionOptions) {
     this.connectionOptions = {
@@ -65,7 +64,7 @@ export class SSHClient {
         try {
           config.privateKey = readFileSync(this.connectionOptions.privateKeyPath);
         } catch (error) {
-          reject(new SSHConnectionError(`Failed to read private key: ${error.message}`));
+          reject(new SSHConnectionError(`Failed to read private key: ${(error as Error).message}`));
           return;
         }
       } else if (this.connectionOptions.privateKey) {
@@ -79,7 +78,6 @@ export class SSHClient {
         .on('ready', () => {
           log.info(`SSH connection established to ${this.connectionOptions.host}`);
           this.connected = true;
-          this.reconnectAttempts = 0;
           resolve();
         })
         .on('error', (err) => {
@@ -219,7 +217,7 @@ export class SSHClient {
       let commandIndex = 0;
       let shellReady = false;
 
-      this.client!.shell({ pty: true }, (err, stream: ClientChannel) => {
+      this.client!.shell((err, stream: ClientChannel) => {
         if (err) {
           reject(new SSHConnectionError(`Failed to start shell: ${err.message}`, err));
           return;
@@ -283,7 +281,7 @@ export class SSHClient {
           return {
             success: false,
             latency: Date.now() - startTime,
-            error: error.message,
+            error: (error as Error).message,
           };
         }
 

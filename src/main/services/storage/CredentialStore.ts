@@ -31,7 +31,7 @@ export class CredentialStore {
       log.info(`Credentials stored for device: ${deviceId}`);
     } catch (error) {
       log.error('Failed to store credentials:', error);
-      throw new Error(`Failed to store credentials: ${error.message}`);
+      throw new Error(`Failed to store credentials: ${(error as Error).message}`);
     }
   }
 
@@ -120,7 +120,7 @@ export class CredentialStore {
       log.warn('All credentials cleared');
     } catch (error) {
       log.error('Failed to clear all credentials:', error);
-      throw new Error(`Failed to clear credentials: ${error.message}`);
+      throw new Error(`Failed to clear credentials: ${(error as Error).message}`);
     }
   }
 

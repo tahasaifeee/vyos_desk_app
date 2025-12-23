@@ -38,7 +38,7 @@ export function registerIPCHandlers(ipcMain: IpcMain, services: Services): void 
       return { id: uuidv4(), success: true, data: devices };
     } catch (error) {
       log.error('DEVICE_LIST error:', error);
-      return { id: uuidv4(), success: false, error: error.message };
+      return { id: uuidv4(), success: false, error: (error as Error).message };
     }
   });
 
@@ -68,7 +68,7 @@ export function registerIPCHandlers(ipcMain: IpcMain, services: Services): void 
       return { id: uuidv4(), success: true };
     } catch (error) {
       log.error('DEVICE_ADD error:', error);
-      return { id: uuidv4(), success: false, error: error.message };
+      return { id: uuidv4(), success: false, error: (error as Error).message };
     }
   });
 
@@ -87,7 +87,7 @@ export function registerIPCHandlers(ipcMain: IpcMain, services: Services): void 
       return { id: uuidv4(), success: true };
     } catch (error) {
       log.error('DEVICE_UPDATE error:', error);
-      return { id: uuidv4(), success: false, error: error.message };
+      return { id: uuidv4(), success: false, error: (error as Error).message };
     }
   });
 
@@ -106,7 +106,7 @@ export function registerIPCHandlers(ipcMain: IpcMain, services: Services): void 
       return { id: uuidv4(), success: true };
     } catch (error) {
       log.error('DEVICE_DELETE error:', error);
-      return { id: uuidv4(), success: false, error: error.message };
+      return { id: uuidv4(), success: false, error: (error as Error).message };
     }
   });
 
@@ -146,7 +146,7 @@ export function registerIPCHandlers(ipcMain: IpcMain, services: Services): void 
       return { id: uuidv4(), success: true, data: testResult };
     } catch (error) {
       log.error('DEVICE_TEST error:', error);
-      return { id: uuidv4(), success: false, error: error.message };
+      return { id: uuidv4(), success: false, error: (error as Error).message };
     }
   });
 
@@ -187,7 +187,7 @@ export function registerIPCHandlers(ipcMain: IpcMain, services: Services): void 
       return { id: uuidv4(), success: true };
     } catch (error) {
       log.error('SSH_CONNECT error:', error);
-      return { id: uuidv4(), success: false, error: error.message };
+      return { id: uuidv4(), success: false, error: (error as Error).message };
     }
   });
 
@@ -202,7 +202,7 @@ export function registerIPCHandlers(ipcMain: IpcMain, services: Services): void 
       return { id: uuidv4(), success: true };
     } catch (error) {
       log.error('SSH_DISCONNECT error:', error);
-      return { id: uuidv4(), success: false, error: error.message };
+      return { id: uuidv4(), success: false, error: (error as Error).message };
     }
   });
 
@@ -221,7 +221,7 @@ export function registerIPCHandlers(ipcMain: IpcMain, services: Services): void 
       return { id: uuidv4(), success: true, data: config };
     } catch (error) {
       log.error('VYOS_GET_CONFIG error:', error);
-      return { id: uuidv4(), success: false, error: error.message };
+      return { id: uuidv4(), success: false, error: (error as Error).message };
     }
   });
 
@@ -236,7 +236,7 @@ export function registerIPCHandlers(ipcMain: IpcMain, services: Services): void 
       return { id: uuidv4(), success: true, data: interfaces };
     } catch (error) {
       log.error('VYOS_GET_INTERFACES error:', error);
-      return { id: uuidv4(), success: false, error: error.message };
+      return { id: uuidv4(), success: false, error: (error as Error).message };
     }
   });
 
@@ -264,7 +264,7 @@ export function registerIPCHandlers(ipcMain: IpcMain, services: Services): void 
       return { id: uuidv4(), success: true };
     } catch (error) {
       log.error('VYOS_EXECUTE_COMMANDS error:', error);
-      return { id: uuidv4(), success: false, error: error.message };
+      return { id: uuidv4(), success: false, error: (error as Error).message };
     }
   });
 
@@ -283,7 +283,7 @@ export function registerIPCHandlers(ipcMain: IpcMain, services: Services): void 
       return { id: uuidv4(), success: true, data: commands };
     } catch (error) {
       log.error('VYOS_PREVIEW_COMMANDS error:', error);
-      return { id: uuidv4(), success: false, error: error.message };
+      return { id: uuidv4(), success: false, error: (error as Error).message };
     }
   });
 
@@ -314,7 +314,7 @@ export function registerIPCHandlers(ipcMain: IpcMain, services: Services): void 
       return { id: uuidv4(), success: true, data: backup };
     } catch (error) {
       log.error('BACKUP_CREATE error:', error);
-      return { id: uuidv4(), success: false, error: error.message };
+      return { id: uuidv4(), success: false, error: (error as Error).message };
     }
   });
 
@@ -324,7 +324,7 @@ export function registerIPCHandlers(ipcMain: IpcMain, services: Services): void 
       return { id: uuidv4(), success: true, data: backups };
     } catch (error) {
       log.error('BACKUP_LIST error:', error);
-      return { id: uuidv4(), success: false, error: error.message };
+      return { id: uuidv4(), success: false, error: (error as Error).message };
     }
   });
 
@@ -347,7 +347,7 @@ export function registerIPCHandlers(ipcMain: IpcMain, services: Services): void 
       return { id: uuidv4(), success: true };
     } catch (error) {
       log.error('BACKUP_RESTORE error:', error);
-      return { id: uuidv4(), success: false, error: error.message };
+      return { id: uuidv4(), success: false, error: (error as Error).message };
     }
   });
 
@@ -361,7 +361,7 @@ export function registerIPCHandlers(ipcMain: IpcMain, services: Services): void 
       return { id: uuidv4(), success: true, data: allSettings };
     } catch (error) {
       log.error('SETTINGS_GET error:', error);
-      return { id: uuidv4(), success: false, error: error.message };
+      return { id: uuidv4(), success: false, error: (error as Error).message };
     }
   });
 
@@ -374,7 +374,7 @@ export function registerIPCHandlers(ipcMain: IpcMain, services: Services): void 
       return { id: uuidv4(), success: true };
     } catch (error) {
       log.error('SETTINGS_UPDATE error:', error);
-      return { id: uuidv4(), success: false, error: error.message };
+      return { id: uuidv4(), success: false, error: (error as Error).message };
     }
   });
 

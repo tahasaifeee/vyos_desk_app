@@ -16,6 +16,8 @@ export interface DeviceProfile {
   authType: 'password' | 'key';
   keyPath?: string;
   credentialId: string;
+  password?: string;        // Temporary field for IPC communication
+  privateKey?: string;      // Temporary field for IPC communication
   vyosVersion?: string;
   hostname?: string;
   lastConnected?: Date;

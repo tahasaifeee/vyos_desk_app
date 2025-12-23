@@ -1,0 +1,30 @@
+==========================================
+  VyOS Desktop Manager - One-Line Installer
+==========================================
+
+COPY THIS COMMAND INTO POWERSHELL (Windows 11):
+
+cd $env:USERPROFILE\Downloads; if (Test-Path vyos_desk_app) { cd vyos_desk_app; git pull origin claude/vyos-desktop-app-lTiFp; Remove-Item -Recurse -Force dist, release -ErrorAction SilentlyContinue } else { git clone https://github.com/tahasaifeee/vyos_desk_app.git; cd vyos_desk_app; git checkout claude/vyos-desktop-app-lTiFp }; npm install; npm run electron:build; explorer release
+
+==========================================
+
+What this does:
+✅ First time: Downloads and builds the app
+✅ Updates: Gets latest fixes and rebuilds
+✅ Automatic: Cleans old builds, installs dependencies
+✅ Opens folder with installer when done
+
+Requirements (install once):
+- Node.js 18 LTS: https://nodejs.org/
+- Git for Windows: https://git-scm.com/
+
+Time: 5-10 minutes
+Result: VyOS-Manager-Setup-1.0.0.exe in opened folder
+
+==========================================
+
+TO UPDATE LATER:
+Just run the same command again! It automatically detects
+and updates your existing installation.
+
+==========================================
